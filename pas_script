@@ -1,0 +1,13 @@
+. /home/db2inst1/sqllib/db2profile;
+
+#A sample script is created to test the PAS scripts
+	
+	dos2unix $1
+	tr -d '\015' < $1 > tmp
+ 	sed 's///g' tmp > $1
+	chmod 755 $1
+	db2 connect to HWNG_DB;
+	#db2 connect to HWNG_DB user db2inst1 using db2inst1;		
+	db2 -tvf $1;
+	rm tmp 	
+
